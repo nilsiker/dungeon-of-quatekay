@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=4 uid="uid://b724c4xn6dcoj"]
+[gd_scene load_steps=119 format=4 uid="uid://b724c4xn6dcoj"]
 
 [ext_resource type="Texture2D" uid="uid://dys05hpt3r7p6" path="res://addons/kaykit_dungeon_remastered/Assets/obj/dungeon_texture.png" id="1_1k0wp"]
 [ext_resource type="PackedScene" uid="uid://todfy31rk10k" path="res://entities/character/player/player.tscn" id="2_6u7w3"]
@@ -8,6 +8,24 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="6_m3vjf"]
 [ext_resource type="PackedScene" uid="uid://b0tsbex6x11k1" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/torch_lit.gltf.glb" id="7_wu8v7"]
 [ext_resource type="PackedScene" uid="uid://b2uya26b2aws" path="res://entities/objects/barrel.tscn" id="8_fw6sq"]
+
+[sub_resource type="Resource" id="Resource_c5x70"]
+script = ExtResource("5_1j4d1")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_nitif"]
+script = ExtResource("6_m3vjf")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_becq4"]
 resource_name = "texture"
@@ -917,34 +935,42 @@ metadata/_editor_source_scene = "res://mesh_libraries/kay_kit_dungeon_mesh_libra
 
 [sub_resource type="Environment" id="Environment_ve3co"]
 background_mode = 1
-background_color = Color(0.113725, 0.109804, 0.12549, 1)
-ambient_light_source = 2
 ambient_light_color = Color(0.090883, 0.196762, 0.232707, 1)
 ambient_light_energy = 5.0
 tonemap_mode = 2
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.2
-volumetric_fog_albedo = Color(0, 0, 0, 1)
+adjustment_brightness = 0.75
+adjustment_contrast = 2.0
+adjustment_saturation = 0.66
 
-[sub_resource type="Resource" id="Resource_c5x70"]
-script = ExtResource("5_1j4d1")
-duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="Resource" id="Resource_nitif"]
-script = ExtResource("6_m3vjf")
-cull_mask = 1048575
-h_offset = 0.0
-v_offset = 0.0
-projection = 0
-fov = 75.0
-size = 1.0
-frustum_offset = Vector2(0, 0)
-near = 0.05
-far = 4000.0
+[sub_resource type="FogMaterial" id="FogMaterial_kq444"]
+density = 0.1
 
 [node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.999999, -0.000164572, 0.000334228, 0.000164578, 0.609684, 0.792604, -0.000334236, 0.79259, -0.609695, 0, 8, -5)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+physics_interpolation_mode = 1
+script = ExtResource("3_1rmvc")
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
+physics_interpolation_mode = 1
+transform = Transform3D(-0.999999, -0.000164572, 0.000334228, 0.000164578, 0.609684, 0.792604, -0.000334236, 0.79259, -0.609695, 0, 8, -5)
+script = ExtResource("4_u6t26")
+follow_mode = 2
+follow_target = NodePath("../Player")
+look_at_mode = 2
+look_at_target = NodePath("../Player")
+tween_resource = SubResource("Resource_c5x70")
+camera_3d_resource = SubResource("Resource_nitif")
+follow_offset = Vector3(0, 8, -5)
+follow_damping = true
+follow_damping_value = Vector3(0, 0, 0.5)
+look_at_offset = Vector3(0, 1.5, 0)
+look_at_damping = true
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = SubResource("MeshLibrary_1q6fj")
@@ -963,38 +989,20 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ve3co")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 0, 0, 0.609505, 0.792743, 0, 0.792729, -0.609516, 0, 8, -5)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-script = ExtResource("3_1rmvc")
-
-[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(-1, 0, 0, 0, 0.609505, 0.792743, 0, 0.792729, -0.609516, 0, 8, -5)
-script = ExtResource("4_u6t26")
-follow_mode = 2
-follow_target = NodePath("../Player")
-look_at_mode = 2
-look_at_target = NodePath("../Player")
-tween_resource = SubResource("Resource_c5x70")
-camera_3d_resource = SubResource("Resource_nitif")
-follow_offset = Vector3(0, 8, -5)
-follow_damping = true
-follow_damping_value = Vector3(0, 0, 0.5)
-look_at_offset = Vector3(0, 1.5, 0)
-look_at_damping = true
-
 [node name="torch_lit_gltf" parent="." instance=ExtResource("7_wu8v7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.361789, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5229, 0.361789, -1.31046)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="torch_lit_gltf"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.851512, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00897, 0)
 light_color = Color(1, 0.873333, 0.6, 1)
-light_energy = 20.0
-light_volumetric_fog_energy = 5.0
 shadow_enabled = true
 shadow_opacity = 0.5
 omni_range = 50.0
 
 [node name="Barrel" parent="." instance=ExtResource("8_fw6sq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09606, 0, 1.85119)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21219, 0, 0.216873)
+size = Vector3(11.4444, 2, 12.242)
+material = SubResource("FogMaterial_kq444")

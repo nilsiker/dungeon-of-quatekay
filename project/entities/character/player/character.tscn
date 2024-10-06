@@ -8,13 +8,13 @@
 
 [node name="Character" type="Node3D" node_paths=PackedStringArray("_active_character")]
 script = ExtResource("1_gk6t3")
-type = 1
-_active_character = NodePath("Knight")
+_active_character = NodePath("Barbarian")
 
 [node name="Barbarian" parent="." instance=ExtResource("2_e38cg")]
-visible = false
+show_mainhand = true
 
 [node name="Knight" parent="." instance=ExtResource("3_wum0v")]
+visible = false
 
 [node name="Mage" parent="." instance=ExtResource("4_x6p57")]
 visible = false

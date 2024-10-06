@@ -18,8 +18,14 @@ func _enter() -> void:
 
 
 func _update(delta: float) -> void:
+
 	_body.velocity = _body.velocity.move_toward(Vector3.ZERO, delta * 30.0)
 	_body.move_and_slide()
+
+	var dir = Input.get_vector("right", "left", "down", "up")
+	if not dir.is_zero_approx():
+		var target_velocity = Vector3(dir.x, 0, dir.y) * 5.0
+		_character.face(target_velocity)
 
 
 func _on_anim_finished(_anim_name):
@@ -28,5 +34,6 @@ func _on_anim_finished(_anim_name):
 	dispatch(EVENT_FINISHED)
 
 
-func _on_hit(_cargo = null):
+func _on_hit(_cargo = null) -> bool:
 	_fighter.hit()
+	return true

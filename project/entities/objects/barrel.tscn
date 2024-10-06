@@ -53,11 +53,12 @@ shape = SubResource("CylinderShape3D_nlnbx")
 
 [node name="Rustle" type="Node" parent="Visuals"]
 script = ExtResource("3_jcxwf")
-_intensity = 0.4
+_intensity = 10.0
 _duration = 0.1
 
 [node name="HitParticles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803712, 0)
+visible = false
 emitting = false
 amount = 20
 one_shot = true
@@ -66,7 +67,6 @@ mesh = SubResource("QuadMesh_iiuei")
 emission_shape = 3
 emission_box_extents = Vector3(0.25, 0.25, 0.25)
 direction = Vector3(0, 1, 0)
-gravity = Vector3(0, -4.9, 0)
 initial_velocity_min = 2.0
 initial_velocity_max = 4.0
 angular_velocity_max = 240.0

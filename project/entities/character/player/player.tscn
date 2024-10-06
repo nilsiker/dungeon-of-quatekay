@@ -33,9 +33,7 @@ script = ExtResource("4_h4yxe")
 script = ExtResource("5_thfui")
 _fighter = NodePath("../../Character/Fighter")
 
-[node name="Character" parent="." node_paths=PackedStringArray("_active_character") instance=ExtResource("2_s2lwh")]
-type = 0
-_active_character = NodePath("Barbarian")
+[node name="Character" parent="." instance=ExtResource("2_s2lwh")]
 
 [node name="Fighter" type="Area3D" parent="Character"]
 script = ExtResource("8_2mumn")
