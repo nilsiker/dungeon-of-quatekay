@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://k4ldlqybo85i"]
+
+[ext_resource type="PackedScene" uid="uid://cnp3p3yvxldgq" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Rogue_Hooded.glb" id="1_u30pb"]
+[ext_resource type="Script" path="res://entities/character/player/kay_kit_characters/KayKitCharacter.gd" id="2_swf51"]
+
+[node name="Rogue" node_paths=PackedStringArray("_mainhand", "_offhand_A", "_twohand", "_cape", "_special", "_anim") instance=ExtResource("1_u30pb")]
+script = ExtResource("2_swf51")
+_mainhand = NodePath("Rig/Skeleton3D/Knife")
+_offhand_A = NodePath("Rig/Skeleton3D/Knife_Offhand")
+_twohand = NodePath("Rig/Skeleton3D/2H_Crossbow")
+_cape = NodePath("Rig/Skeleton3D/Rogue_Cape")
+_special = NodePath("Rig/Skeleton3D/Throwable")
+_anim = NodePath("AnimationPlayer")
+
+[node name="Knife_Offhand" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.999999, -1.17465e-07, 2.60635e-08, -7.18757e-08, -5.30967e-07, 0.999999, -1.957e-07, 0.999999, 6.23449e-07, 0.883132, 1.04926, -1.63329e-05)
+visible = false
+
+[node name="1H_Crossbow" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(-4.5731e-07, 4.00596e-08, -0.999999, -0.999999, -4.96539e-07, 3.978e-07, -4.43668e-07, 0.999999, -3.07174e-08, -0.778504, 1.04926, -0.0103745)
+visible = false
+
+[node name="2H_Crossbow" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(-4.5731e-07, 4.00596e-08, -0.999999, -0.999999, -4.96539e-07, 3.978e-07, -4.43668e-07, 0.999999, -3.07174e-08, -0.778504, 1.04926, -0.0103745)
+visible = false
+
+[node name="Knife" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(0.999999, 1.88247e-07, -4.39071e-07, -3.79561e-07, -7.95385e-07, -0.999999, -1.1747e-07, 0.999999, -7.42514e-07, -0.883132, 1.04926, -1.60515e-05)
+visible = false
+
+[node name="Throwable" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(0.999999, 2.0298e-07, -4.52757e-07, -3.93247e-07, -6.76176e-07, -0.999999, -1.32203e-07, 0.999999, -6.23305e-07, -0.883132, 1.04926, 0.18023)
+visible = false
+
+[node name="Rogue_Cape" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 0, 0, 0, 1, 0, 1.21587, 0)
+visible = false
+
+[node name="Rogue_Head_Hooded" parent="Rig/Skeleton3D" index="9"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.45, 0)

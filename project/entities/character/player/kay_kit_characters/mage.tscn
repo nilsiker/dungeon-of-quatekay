@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://0gwhstdma7lh"]
+
+[ext_resource type="PackedScene" uid="uid://47amc6ni6lv3" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Mage.glb" id="1_od05d"]
+[ext_resource type="Script" path="res://entities/character/player/kay_kit_characters/KayKitCharacter.gd" id="2_7s7ww"]
+
+[node name="Mage" node_paths=PackedStringArray("_mainhand", "_twohand", "_hat", "_cape", "_special", "_anim") instance=ExtResource("1_od05d")]
+script = ExtResource("2_7s7ww")
+show_hat = true
+_mainhand = NodePath("Rig/Skeleton3D/1H_Wand")
+_twohand = NodePath("Rig/Skeleton3D/2H_Staff")
+_hat = NodePath("Rig/Skeleton3D/Mage_Hat")
+_cape = NodePath("Rig/Skeleton3D/Mage_Cape")
+_special = NodePath("Rig/Skeleton3D/Spellbook_open")
+_anim = NodePath("AnimationPlayer")
+
+[node name="Spellbook" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.999999, -3.80067e-07, -1.32199e-07, 4.78006e-07, 0.999999, -5.30967e-07, 2.10433e-07, 6.23449e-07, 0.999999, 0.883132, 1.04926, 0.265739)
+visible = false
+
+[node name="Spellbook_open" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.999999, -3.80067e-07, -1.32199e-07, 4.78006e-07, 0.999999, -5.30967e-07, 2.10433e-07, 6.23449e-07, 0.999999, 0.883132, 1.04926, 0.145387)
+visible = false
+
+[node name="1H_Wand" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(0.999999, 2.0298e-07, -4.52757e-07, -3.93247e-07, -6.76176e-07, -0.999999, -1.32203e-07, 0.999999, -6.23305e-07, -0.883132, 1.04926, -3.45664e-07)
+visible = false
+
+[node name="2H_Staff" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(0.999999, 2.0298e-07, -4.52757e-07, -3.93247e-07, -6.76176e-07, -0.999999, -1.32203e-07, 0.999999, -6.23305e-07, -0.883132, 1.04926, -3.45664e-07)
+visible = false
+
+[node name="Mage_Hat" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(1, -8.47033e-22, 0, 2.11758e-22, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.7841, -1.02333e-07)
+
+[node name="Mage_Hat" parent="Rig/Skeleton3D/Mage_Hat" index="0"]
+transform = Transform3D(0.6, 1.41995e-28, 0, -3.9613e-29, 0.6, 0, 2.11377e-31, -4.47035e-08, 0.6, -0.00496006, -0.26575, -0.0704683)
+
+[node name="Mage_Cape" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21587, -1.02333e-07)
+visible = false
+
+[node name="Mage_Cape" parent="Rig/Skeleton3D/Mage_Cape" index="0"]
+visible = false
+
+[node name="Mage_Head" parent="Rig/Skeleton3D" index="9"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.45, 0)

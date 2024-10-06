@@ -1,0 +1,4 @@
+# Godot 4+ specific ignores
+project/.godot/
+project/android/
+project/addons

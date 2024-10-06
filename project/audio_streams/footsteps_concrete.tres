@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://clgo0n33bd2iy"]
+
+[ext_resource type="AudioStream" uid="uid://co88w3o4mk7f6" path="res://addons/kenney impact sounds/footstep_concrete_000.ogg" id="1_mgjnn"]
+[ext_resource type="AudioStream" uid="uid://bq3ymrbg51d3r" path="res://addons/kenney impact sounds/footstep_concrete_001.ogg" id="2_vckff"]
+[ext_resource type="AudioStream" uid="uid://4bk3liqm7upm" path="res://addons/kenney impact sounds/footstep_concrete_002.ogg" id="3_es0ba"]
+[ext_resource type="AudioStream" uid="uid://bfboyglcny38i" path="res://addons/kenney impact sounds/footstep_concrete_003.ogg" id="4_rvt3d"]
+[ext_resource type="AudioStream" uid="uid://din72s2knit3g" path="res://addons/kenney impact sounds/footstep_concrete_004.ogg" id="5_hgipu"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_mgjnn")
+stream_1/stream = ExtResource("2_vckff")
+stream_2/stream = ExtResource("3_es0ba")
+stream_3/stream = ExtResource("4_rvt3d")
+stream_4/stream = ExtResource("5_hgipu")

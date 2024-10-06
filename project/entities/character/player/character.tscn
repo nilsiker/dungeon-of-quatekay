@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://drggou0b6niiw"]
+
+[ext_resource type="Script" path="res://entities/character/player/Character.gd" id="1_gk6t3"]
+[ext_resource type="PackedScene" uid="uid://ccrjyofd2qku" path="res://entities/character/player/kay_kit_characters/barbarian.tscn" id="2_e38cg"]
+[ext_resource type="PackedScene" uid="uid://bj23o7jmv6lcg" path="res://entities/character/player/kay_kit_characters/knight.tscn" id="3_wum0v"]
+[ext_resource type="PackedScene" uid="uid://0gwhstdma7lh" path="res://entities/character/player/kay_kit_characters/mage.tscn" id="4_x6p57"]
+[ext_resource type="PackedScene" uid="uid://k4ldlqybo85i" path="res://entities/character/player/kay_kit_characters/rogue.tscn" id="5_8w8fe"]
+
+[node name="Character" type="Node3D" node_paths=PackedStringArray("_active_character")]
+script = ExtResource("1_gk6t3")
+type = 1
+_active_character = NodePath("Knight")
+
+[node name="Barbarian" parent="." instance=ExtResource("2_e38cg")]
+visible = false
+
+[node name="Knight" parent="." instance=ExtResource("3_wum0v")]
+
+[node name="Mage" parent="." instance=ExtResource("4_x6p57")]
+visible = false
+
+[node name="Rogue" parent="." instance=ExtResource("5_8w8fe")]
+visible = false
+
+[connection signal="anim_finished" from="Barbarian" to="." method="_on_anim_finished"]
+[connection signal="anim_footstep" from="Barbarian" to="." method="_on_anim_footstep"]
+[connection signal="hit" from="Barbarian" to="." method="_on_anim_hit"]
+[connection signal="anim_finished" from="Knight" to="." method="_on_anim_finished"]
+[connection signal="anim_footstep" from="Knight" to="." method="_on_anim_footstep"]
+[connection signal="hit" from="Knight" to="." method="_on_anim_hit"]
+[connection signal="anim_finished" from="Mage" to="." method="_on_anim_finished"]
+[connection signal="anim_footstep" from="Mage" to="." method="_on_anim_footstep"]
+[connection signal="hit" from="Mage" to="." method="_on_anim_hit"]
+[connection signal="anim_finished" from="Rogue" to="." method="_on_anim_finished"]
+[connection signal="anim_footstep" from="Rogue" to="." method="_on_anim_footstep"]
+[connection signal="hit" from="Rogue" to="." method="_on_anim_hit"]
