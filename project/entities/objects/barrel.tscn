@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2uya26b2aws"]
+[gd_scene load_steps=12 format=3 uid="uid://b2uya26b2aws"]
 
 [ext_resource type="PackedScene" uid="uid://d20fgpmctjic8" path="res://addons/kaykit_dungeon_remastered/Assets/gltf/barrel_small.gltf.glb" id="1_228hf"]
 [ext_resource type="Script" path="res://entities/objects/Barrel.gd" id="1_ojgq3"]
 [ext_resource type="Script" path="res://entities/objects/Rustle.gd" id="3_jcxwf"]
-[ext_resource type="AudioStream" uid="uid://dq4qhq5fylwx7" path="res://addons/kenney impact sounds/impact_plate_heavy_000.ogg" id="4_ast1q"]
-[ext_resource type="AudioStream" uid="uid://bc2kfl8b14ksn" path="res://addons/kenney impact sounds/impact_plate_heavy_001.ogg" id="5_w6g4l"]
-[ext_resource type="AudioStream" uid="uid://ej4mar1nvqts" path="res://addons/kenney impact sounds/impact_plate_heavy_002.ogg" id="6_8mmjc"]
-[ext_resource type="AudioStream" uid="uid://c5biws644yctt" path="res://addons/kenney impact sounds/impact_plate_heavy_003.ogg" id="7_6ss73"]
-[ext_resource type="AudioStream" uid="uid://bh0a5e02qdmo6" path="res://addons/kenney impact sounds/impact_plate_heavy_004.ogg" id="8_jq88r"]
+[ext_resource type="Script" path="res://scripts/Stat.gd" id="9_gcvf5"]
+[ext_resource type="Script" path="res://scripts/StatResource.gd" id="10_pyvkk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nlnbx"]
 height = 1.0
@@ -34,16 +31,14 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.486667)
 colors = PackedColorArray(0.737255, 0.486275, 0.360784, 1, 0.658824, 0.721569, 0.760784, 1)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xixdx"]
-streams_count = 5
-stream_0/stream = ExtResource("4_ast1q")
-stream_1/stream = ExtResource("5_w6g4l")
-stream_2/stream = ExtResource("6_8mmjc")
-stream_3/stream = ExtResource("7_6ss73")
-stream_4/stream = ExtResource("8_jq88r")
+[sub_resource type="Resource" id="Resource_u415h"]
+script = ExtResource("10_pyvkk")
+value = 20
+max_value = 20
 
-[node name="Barrel" type="StaticBody3D"]
+[node name="Barrel" type="StaticBody3D" node_paths=PackedStringArray("_health")]
 script = ExtResource("1_ojgq3")
+_health = NodePath("Health")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -57,8 +52,7 @@ _intensity = 10.0
 _duration = 0.1
 
 [node name="HitParticles" type="CPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803712, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487862, 0)
 emitting = false
 amount = 20
 one_shot = true
@@ -75,6 +69,27 @@ scale_amount_max = 0.3
 color_ramp = SubResource("Gradient_ppefe")
 color_initial_ramp = SubResource("Gradient_6swny")
 
-[node name="HitAudio" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-stream = SubResource("AudioStreamRandomizer_xixdx")
+[node name="DestroyedParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803712, 0)
+emitting = false
+amount = 150
+one_shot = true
+explosiveness = 0.95
+mesh = SubResource("QuadMesh_iiuei")
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.25, 0.25)
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 1.0
+initial_velocity_max = 6.0
+angular_velocity_max = 240.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+color_ramp = SubResource("Gradient_ppefe")
+color_initial_ramp = SubResource("Gradient_6swny")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_gcvf5")
+stat = SubResource("Resource_u415h")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]

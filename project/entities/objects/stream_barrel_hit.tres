@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://brjfjy75vlmwm"]
+
+[ext_resource type="AudioStream" uid="uid://dq4qhq5fylwx7" path="res://addons/kenney impact sounds/impact_plate_heavy_000.ogg" id="1_w6klv"]
+[ext_resource type="AudioStream" uid="uid://bc2kfl8b14ksn" path="res://addons/kenney impact sounds/impact_plate_heavy_001.ogg" id="2_ck1kw"]
+[ext_resource type="AudioStream" uid="uid://ej4mar1nvqts" path="res://addons/kenney impact sounds/impact_plate_heavy_002.ogg" id="3_xa3u8"]
+[ext_resource type="AudioStream" uid="uid://c5biws644yctt" path="res://addons/kenney impact sounds/impact_plate_heavy_003.ogg" id="4_srqpy"]
+[ext_resource type="AudioStream" uid="uid://bh0a5e02qdmo6" path="res://addons/kenney impact sounds/impact_plate_heavy_004.ogg" id="5_8r7lg"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_w6klv")
+stream_1/stream = ExtResource("2_ck1kw")
+stream_2/stream = ExtResource("3_xa3u8")
+stream_3/stream = ExtResource("4_srqpy")
+stream_4/stream = ExtResource("5_8r7lg")

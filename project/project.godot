@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+AudioChannel="*res://scripts/AudioChannel.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/destruction/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
@@ -51,7 +52,15 @@ attack={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_5="Mouse"
+
 [physics]
 
 common/physics_jitter_fix=0.0
 common/physics_interpolation=true
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=3
