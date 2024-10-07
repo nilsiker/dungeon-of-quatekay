@@ -66,6 +66,9 @@ class Anim:
 	const WALK_BACK = "Walking_Backwards"
 	const RUN_A = "Running_A"
 	const RUN_B = "Running_B"
+	const JUMP = "Jump_Start"
+	const FALL = "Jump_Idle"
+	const LAND = "Jump_Land"
 	# ATTACKING
 	const ATTACK_1H_CHOP = "1H_Melee_Attack_Chop"
 	const ATTACK_1H_DIAGONAL = "1H_Melee_Attack_Slice_Diagonal"

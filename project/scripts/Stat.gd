@@ -8,12 +8,12 @@ signal depleted
 
 @export var stat: StatResource
 
-func restore(amount: int):
+func restore(amount: float):
     stat.value = min(stat.max_value, stat.value + amount)
     restored.emit()
     updated.emit(stat.value)
 
-func tax(amount: int):
+func tax(amount: float):
     stat.value = max(0, stat.value - amount)
     taxed.emit()
     updated.emit(stat.value)

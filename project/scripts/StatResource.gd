@@ -1,5 +1,5 @@
 extends Resource
 class_name StatResource
 
-@export var value: int
-@export var max_value: int
+@export var value: float
+@export var max_value: float

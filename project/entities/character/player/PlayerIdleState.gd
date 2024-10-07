@@ -21,3 +21,6 @@ func _update(delta: float) -> void:
 
 	_body.velocity = _body.velocity.move_toward(Vector3.ZERO, delta * 30.0)
 	_body.move_and_slide()
+
+	if not _body.is_on_floor():
+		dispatch(&"jump")
